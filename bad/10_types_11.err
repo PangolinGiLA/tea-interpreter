@@ -1,0 +1,3 @@
+[Error] Cannot use `+` with types: `i64`, `char`. The `+` operator only accepts the following type pairs:
+- (integer, integer) if both types are equal,
+- (char, integer) in this order.

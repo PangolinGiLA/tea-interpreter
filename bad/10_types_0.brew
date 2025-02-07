@@ -1,0 +1,52 @@
+// Type mismatch 0x <---
+// Op mismatch 1x
+// Arr 2x
+// Tuple 3x
+// Decl 4x
+// Return 5x
+// Cast 6x
+// Const 7x
+
+{
+    let a: i64 = 0;
+    let b: i32 = <i32>(0);
+    if a == b { skip; }; // Cannot compare
+}
+{
+    fn f(x: [i32]) -> void { skip; };
+    let y: [char] = ['a'];
+    f(y); // Cannot take as argument
+}
+{
+    let a: [string] = <string>[];
+    a.resize(0, 'a'); // Cannot resize (even to 0).
+}
+{
+    fn f() -> char {
+        return 5; // Cannot return
+    };
+}
+{
+    fn f() -> char {
+        if false {
+            return; // Cannot return
+        };
+        return 'a';
+    };
+}
+{
+    if 5 { skip; }; // Cannot make condition
+}
+{
+    let a: (char, const i64) = ('a', 5); // Cannot initialize
+}
+{
+    using tup_t = (char, string);
+    let t = <tup_t>(('a', "alama"));
+    let (c, s) = t; // Cannot unpack without explicit cast back to tuple
+}
+{
+    let a: i64 = 0;
+    let b: ref i64 = ref a;
+    a = ref b; // Cannot do noref = ref
+}

@@ -1,0 +1,34 @@
+{
+    let y = 3;
+    // Crazy tuple.
+    let x = (1, (2, 'c', (<u32>(1), [(1, 2), (2, 3)])), ("aaaa", lambda (x: i64) -> i64 {return x + 1;}, "aha", ref y));
+    // It can be unpacked at many different levels.
+    let (a, b, c) = x;
+    print(a); // 1
+    print(b); // Another crazy tuple.
+    print(c); // Also a crazy tuple.
+    
+    {
+        let (d, (e, f, g), h) = x; // Unpacking a level deeper.
+        print(d); // 1
+        print(e); // 2
+        print(f); // 'c'
+        print(g); // tuple
+        print(h); // tuple
+    };
+
+    {
+        // Fully unpacking this tuple.
+        let (i, (j, k, (l, m)), (n, o, p, r)) = x;
+        print(i); // 1
+        print(j); // 2
+        print(k); // 'c'
+        print(l); // 1
+        print(m[1]); // (2, 3) -- This is an array, it can be indexed. 
+        print(n); // "aaaa"
+        print(o(2)); // 3 -- Calling the function.
+        print(p); // "aha"
+        r = 10; // r is a reference to y.
+        print(y); // 10
+    };
+}

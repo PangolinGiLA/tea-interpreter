@@ -1,0 +1,4 @@
+{
+    // Cannot cast functions (if type changes).
+    let f = <(i64 -> const i64)>(lambda (x: i64) -> i64 { return 0; });
+}

@@ -1,0 +1,93 @@
+Pominąłem wersje na mniej punktów, ponieważ wymagania są powtórzone w wersjach na więcej punktów.
+
+Język imperatywny
+
+-------------------------------------------------------------------------------
+
+Na 9 punktów
+-------------------------------------------------------------------------------
+-------------------------------------------------------------------------------
++   Co najmniej dwa typy wartości w wyrażeniach: int i bool (to znaczy if 2+2
+    then _ parsuje się, ale wyrażenie ma niepoprawny typ).
+-------------------------------------------------------------------------------
++   Arytmetyka, porównania.
+-------------------------------------------------------------------------------
++   while, if (z else i bez, może być też składnia if _ elif _ else _ endif).
+-------------------------------------------------------------------------------
++   Funkcje lub procedury (bez zagnieżdżania), rekurencja.
+-------------------------------------------------------------------------------
++   Jawne wypisywanie wartości na wyjście (instrukcja lub wbudowana procedura
+    print).
+-------------------------------------------------------------------------------
+Dwie wybrane rzeczy z poniższej listy lub coś o porównywalnej trudności:
+-------------------------------------------------------------------------------
++   dwa sposoby przekazywania parametrów (przez zmienną / przez wartość),
+-------------------------------------------------------------------------------
++   pętla for w stylu Pascala,
+-------------------------------------------------------------------------------
+-   typ string, literały napisowe, wbudowane funkcje pozwalające na rzutowanie 
+    między napisami a liczbami, wyrażenia z efektami ubocznymi (przypisania, 
+    operatory języka C ++, += itd).
+-------------------------------------------------------------------------------
+
+Na 12 punktów
+-------------------------------------------------------------------------------
+-------------------------------------------------------------------------------
++   Przesłanianie identyfikatorów ze statycznym ich wiązaniem (np. zmienne 
+    globalne i lokalne w funkcjach lub lokalne w blokach).
+-------------------------------------------------------------------------------
++   Statyczne typowanie (tj. zawsze terminująca faza kontroli typów przed 
+    rozpoczęciem wykonania programu). (Wymaganie nie dotyczy nietrywialnych 
+    projektów, w których dynamiczne typowanie jest istotną cechą wybranego 
+    języka, np. Smalltalk, JavaScript).
+-------------------------------------------------------------------------------
++   Jawnie obsłużone dynamiczne błędy wykonania, np. dzielenie przez zero.
+-------------------------------------------------------------------------------
++   Funkcje zwracające wartość (tzn. nie tylko procedury; za to mogą być tylko
+    funkcje – jak w C).
+-------------------------------------------------------------------------------
+Dwie dodatkowe rzeczy z poniższej listy lub coś o porównywalnej trudności:
+-------------------------------------------------------------------------------
+-   rekordy,
+-------------------------------------------------------------------------------
++   tablice indeksowane int lub coś à la listy,
+-------------------------------------------------------------------------------
+-   tablice/słowniki indeksowane dowolnymi porównywalnymi wartościami; typ 
+    klucza należy uwzględnić w typie słownika,
+-------------------------------------------------------------------------------
++   dowolnie zagnieżdżone krotki z przypisaniem jak w Pythonie (składnia wedle 
+    uznania),
+-------------------------------------------------------------------------------
++   funkcje jako parametry,
+-------------------------------------------------------------------------------
++   zwracanie funkcji w wyniku, domknięcia à la JavaScript.
+-------------------------------------------------------------------------------
++   funkcje anonimowe (szczególnie sensowne w połączeniu z punktem e).
+-------------------------------------------------------------------------------
+
+Na 15 punktów
+-------------------------------------------------------------------------------
+-------------------------------------------------------------------------------
++   Dowolnie zagnieżdżone definicje funkcji / procedur z zachowaniem
+    poprawności statycznego wiązania identyfikatorów (jak w Pascalu).
+-------------------------------------------------------------------------------
++   Jeszcze jedna-dwie funkcjonalności z listy powyżej.
+-------------------------------------------------------------------------------
+
+Razem 15 punktów.
+
+Dodatki
+-------------------------------------------------------------------------------
++   Aliasowanie typów.
++   Bardzo silne typowanie (ograniczone i tylko jawne rzutowania).
++   Referencje, typy const.
++   Bezpośrednia inferencja typów.
++   Asserty.
++   Ustalanie otwartości/zamkniętości przedziałów w pętli for.
++   Operacje logiczne xor i iff.
++   Ostrzeżenia o nietypowych konstrukcjach w kodzie.
+-------------------------------------------------------------------------------
+
+Wycena dodatków: 3 punkty.
+
+Łącznie: 18 punktów.

@@ -1,0 +1,1 @@
+[Error] Only types with ordering (integer, char) can be used in this context. Instead, provided `string`.

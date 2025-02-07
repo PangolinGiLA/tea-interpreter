@@ -1,0 +1,16 @@
+{
+    using pair = (i64, i64);
+    let p1 = <pair>((1, 2));
+    let p2 = <pair>((3, 4));
+    let (a, b) = <(i64, i64)>(p1);
+    // You can also use "real alias" for easier casting.
+    let (c, d) = <real pair>(p2);
+
+    // Aliases can be used just like normal types.
+    fn first(p: pair) -> i64 {
+        let (x, y) = <real pair>(p);
+        return x;
+    };
+
+    print(first(p1));
+}

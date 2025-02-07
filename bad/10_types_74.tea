@@ -1,0 +1,5 @@
+{
+    // Functions are const by default.
+    fn f() -> void { skip; };
+    f = lambda () -> void { skip; }; // Type mismatch (implicit const violation)
+}

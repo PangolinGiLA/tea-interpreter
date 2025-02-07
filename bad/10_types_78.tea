@@ -1,0 +1,14 @@
+{
+    let t1 = [1, 2];
+    let t2 = [3, 4];
+    let T1 = [t1, t2];
+    let T2 = [t2, t1];
+    let t: [const [[i64]]];
+
+    // Array t is not const.
+    t.push(<const [[i64]]>(T1));
+    t.push(<const [[i64]]>(T2));
+
+    // Array t[0] is const (and propagates further).
+    t[0][0][0] = 2; // Const violation
+}

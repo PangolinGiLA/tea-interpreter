@@ -1,0 +1,36 @@
+{
+    // Lambdas are totally mutable (and recursive)!
+    let colour: (i64 -> void);
+    let red_colour: (i64 -> void);
+    let blue_colour: (i64 -> void);
+
+    blue_colour = lambda (x: i64) -> void {
+        if x == 0 {
+            return;
+        };
+
+        print("blue");
+        if x % 5 == 0 {
+            colour = blue_colour;
+            red_colour(x - 1);
+        } else {
+            colour(x - 1);
+        };
+    };
+    red_colour = lambda (x: i64) -> void {
+        if x == 0 {
+            return;
+        };
+
+        print("red");
+        if x % 3 == 0 {
+            colour = red_colour;
+            blue_colour(x - 1);
+        } else {
+            colour(x - 1);
+        };
+    };
+    colour = red_colour;
+    // Try to make sense of this function (we can't explain what it does).
+    colour(50);
+}

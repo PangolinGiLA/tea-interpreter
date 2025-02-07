@@ -1,0 +1,7 @@
+{
+    // Ultimate shadowing (arguments shadow function name
+    // and all arguments before).
+    fn x(x: i64, y: i64) -> i64 {
+        return x(y); // Error: x is not a function!
+    };
+}

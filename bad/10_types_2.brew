@@ -1,0 +1,43 @@
+// Type mismatch 0x
+// Op mismatch 1x
+// Arr 2x <---
+// Tuple 3x
+// Decl 4x
+// Return 5x
+// Cast 6x
+// Const 7x
+
+{
+    let t = (4, 3, ['a', 'l', 'a']);
+    print(t[0]); // Expected array
+}
+
+{
+    let tab = [1, 2];
+    let a: u32 = tab.size(); // Type mismatch
+}
+
+{
+    let a = <u32>(1);
+    let tab = [0, 1, 2, 3];
+    print(tab[a]); // Size is i64
+}
+
+{
+    let a = <i32>(5);
+    let tab = [0, 1, 2];
+    tab.resize(a, 0); // Size is i64
+}
+
+{
+    let tab = [0, 1, 2];
+    let tab[0] = 3; // Array lvalue in declaration
+}
+
+{
+    let tab: [i64] = []; // Empty array rvalue must specify type
+}
+
+{
+    let tab = [0, 1, 2, true]; // Different types
+}

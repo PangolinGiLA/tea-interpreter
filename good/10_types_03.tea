@@ -1,0 +1,33 @@
+{
+
+    // References (can only *take* a reference to a named variable).
+    let bool_v = true;
+    let arr = [bool_v, false]; // can be of any type
+    
+    let bool2_v = bool_v;
+    let refbool_v = ref bool_v;
+    let refarr = ref arr;
+    let arr_copy = arr;
+    
+    // Named variables of reference type are decayed in rvalues, unless `ref` is used.
+    // `ref = noref` modifies the underlying value.
+    refbool_v = !refbool_v;
+    
+    // bool_v and arr_v[0] values differ, because arr_v copied the bool_v value.
+    assert(bool_v != arr[0], "Reference modifies location value.");
+
+    assert(arr_copy == arr, "Reference init does not mutate.");
+    assert(refarr == arr, "Reference has equal value to location value.");
+
+    refarr = [bool_v, !arr[1]];
+
+    assert(arr_copy != arr, "Reference modification mutates the location value.");
+    assert(refarr == arr, "Decayed reference has equal value to location value.");
+    
+    // `ref = ref` changes the ref location.
+    refbool_v = ref bool2_v;
+    refbool_v = !bool_v;
+    assert(refbool_v == bool2_v && bool2_v != bool_v, "ref = ref changes location.");
+    
+    print("Refs passed!");
+}

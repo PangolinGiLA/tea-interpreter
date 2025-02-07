@@ -1,0 +1,1 @@
+[Error] Cannot shadow type aliases. Type alias `type_t` declared at line 5, column 15 was declared previously.

@@ -1,0 +1,5 @@
+{
+    // Cannot cast to aliases if the underlying type cannot be cast.
+    using char_t = char;
+    let x = <((i64, char_t), i64)>(((1, true), 0)); // Invalid cast
+}

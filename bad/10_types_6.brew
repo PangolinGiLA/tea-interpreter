@@ -1,0 +1,58 @@
+// Type mismatch 0x
+// Op mismatch 1x
+// Arr 2x
+// Tuple 3x
+// Decl 4x
+// Return 5x
+// Cast 6x <---
+// Const 7x
+
+{
+    // Cannot cast between chars and ints.
+    let x = <i64>('a'); // Invalid cast
+}
+
+{
+    // Cannot cast between bools and ints.
+    let x = <bool>(0);
+}
+
+{
+    // Cannot cast cref to ref.
+    let x = 1;
+    let y = <ref i64>(cref x); // Invalid cast
+}
+
+{
+    // Cannot cast the underlying reference type.
+    let x: i64 = 1;
+    let y = <ref i32>(ref x); // Invalid cast
+}
+
+{
+    // Cannot cast between arrays and tuples.
+    let x = <(i64, i64)>([1, 2]); // Invalid cast
+}
+
+{
+    // Cannot cast the underlying array type.
+    let x = <[i32]>([1, 2]); // Invalid cast
+}
+
+{
+    // Cannot cast functions (if type changes).
+    let f = <(i64 -> const i64)>(lambda (x: i64) -> i64 { return 0; });
+}
+
+{
+    // Cannot cast between aliases if the underlying type cannot be cast.
+    using type_a = void;
+    using type_b = u32;
+    let x = <type_a>(<type_b>(<u32>(0))); // Invalid cast
+}
+
+{
+    // Cannot cast to aliases if the underlying type cannot be cast.
+    using char_t = char;
+    let x = <((i64, char_t), i64)>(((1, true), 0)); // Invalid cast
+}

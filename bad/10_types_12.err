@@ -1,0 +1,4 @@
+[Error] Cannot use `-` with types: `i64`, `[i64]`. The `-` operator only accepts the following type pairs:
+- (integer, integer) if both types are equal,
+- (char, char),
+- (char, integer) in this order.

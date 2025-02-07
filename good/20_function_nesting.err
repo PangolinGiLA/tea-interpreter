@@ -1,0 +1,1 @@
+[Warning] Declaration of `print_hello` at line 3, column 12 shadows a previously declared variable of the same type.

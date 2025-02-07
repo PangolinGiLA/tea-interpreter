@@ -1,0 +1,33 @@
+{
+    {  
+        fn create_adder(x : i64) -> (i64 -> i64) {
+            return lambda (y : i64) -> i64 {
+                return x + y;
+            };
+        };
+
+        let inc = create_adder(1);
+        let add3 = create_adder(3);
+        print(inc(3));
+        print(add3(3));
+    };
+    {
+        fn create_person(name: string) -> ((void -> string), (string -> void)) {
+            return (lambda () -> string {
+                return name;
+            }, lambda (new_name: string) -> void {
+                name = new_name;
+            });
+        };
+
+        // We have classes! Kinda...
+        let (alice_get_name, alice_set_name) = create_person("Alice");
+        let (bob_get_name, bob_set_name) = create_person("Bob");
+        print(alice_get_name());
+        alice_set_name("Ala");
+        print(alice_get_name());
+        print(bob_get_name());
+        bob_set_name("Robert");
+        print(bob_get_name());
+    };
+}

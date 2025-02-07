@@ -1,0 +1,8 @@
+Parameter passed by value before function call: 
+1
+Parameter passed by reference before function call: 
+1
+Parameter passed by value after function call: 
+1
+Parameter passed by reference after function call: 
+2

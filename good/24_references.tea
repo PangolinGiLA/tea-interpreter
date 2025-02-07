@@ -1,0 +1,24 @@
+{
+    {
+        let x = 3;
+        let y = ref x;
+        print(y);
+        y = 1;
+        print(x); // 3
+    };
+    {
+        let z: const i64 = <const i64>(1);
+        let w = <i64>(z); // Can cast away const.
+        w = 5;
+        print(z);
+        print(w);
+    };
+    {
+        let x = 1;
+        let y = ref x;
+        fn function(a: i64) -> void {
+            return;
+        };
+        function(y); // ref is decayed
+    };
+}

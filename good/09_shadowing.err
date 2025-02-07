@@ -1,0 +1,6 @@
+[Warning] Declaration of `x` at line 5, column 13 shadows a previously declared variable of the same type.
+[Warning] Declaration of `y` at line 14, column 17 shadows a previously declared variable of the same type.
+[Warning] Declaration of `z` at line 15, column 17 shadows a previously declared variable of the same type.
+[Warning] Declaration of `x` at line 23, column 26 shadows a previously declared variable of the same type.
+[Warning] Declaration of `x` at line 32, column 13 shadows a previously declared variable of the same type.
+[Warning] Declaration of `x` at line 36, column 17 shadows a previously declared variable of the same type.

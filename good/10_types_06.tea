@@ -1,0 +1,14 @@
+{
+    // Unnamed references (no decay).
+    let x = 1;
+    let y = -1;
+    let tab = [ref x, ref y];
+    print((x, y)); // 1, -1
+    print((tab[0], tab[1])); // loc #..., loc #...
+    {
+        let xref = tab[0];
+        xref = 2;
+        assert(x == 2, "tab ref");
+    };
+    print("Unnamed references passed!");
+}

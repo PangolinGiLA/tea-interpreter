@@ -1,0 +1,38 @@
+{
+    // Basic array operations.
+    let y = ["ala", "ma", "kota"];
+    let i = 0;
+    print(y); // ["ala", "ma", "kota"]
+    y[i + 1] = "miala";
+    print(y); // ["ala", "miala", "kota"]
+    i = i + 3;
+    y[i - 1] = "psa";
+    print(y); // ["ala", "miala", "psa"]
+    {
+        print(y[0][0]); // a
+        y[0][0] = 'e';
+        print(y[0]); // ela
+        print(y);
+    };
+    
+    y.push("i");
+    y.push("kota");
+    print(y); // ["ela", "miala", "psa", "i", "kota"]
+    y.push("Marysi");
+    print(y); // ["ela", "miala", "psa", "i", "kota", "Marysi"]
+    y.pop();
+    print(y); // ["ela", "miala", "psa", "i", "kota"]
+    y.resize(7, "kota");
+    print(y); // [..., "kota", "kota", "kota"]
+    y.resize(6, "");
+    print(y); // [..., "kota", "kota"]
+
+    for word in [0, y.size()) {
+        let sum = 0;
+        let w = y[word];
+        for letter in [0, w.size()) {
+            sum = sum + (y[word][letter] - 'a');
+        };
+        print(("Sum for word:", y[word], "=", sum));
+    };
+}

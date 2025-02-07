@@ -1,0 +1,6 @@
+{
+    // Cref is strong.
+    let x = 5;
+    let y = cref x;
+    y = <const i64>(3); // Type mismatch (implicit const violation)
+}

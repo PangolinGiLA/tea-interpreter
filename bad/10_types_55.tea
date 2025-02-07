@@ -1,0 +1,15 @@
+{
+    let x = 2;
+    fn f() -> bool {
+        if 4 < 3 {
+            return false;
+        } else if 2 < 3 {
+            return true;
+        } else {
+            return true;
+        };
+        x = 3; // Dead code warning
+    };
+    return f(); // Uncaught return
+    x = 4;
+}

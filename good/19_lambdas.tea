@@ -1,0 +1,21 @@
+{
+    fn bubble_sort(arr: ref [(i64, i64)], comparator: (((i64, i64), (i64, i64)) -> bool)) -> void {
+        for i in [0, arr.size()) {
+            for j in [1, arr.size()) {
+                if comparator(arr[j - 1], arr[j]) {
+                    let temp = arr[j - 1];
+                    arr[j - 1] = arr[j];
+                    arr[j] = temp;
+                };
+            };
+        };
+    };
+
+    let a = [(2, 3), (1, 1), (5, 10), (1, 0)];
+    bubble_sort(ref a, lambda (p1: (i64, i64), p2: (i64, i64)) -> bool {
+        let ((x1, y1), (x2, y2)) = (p1, p2);
+        // Lexicographical order.
+        return x1 > x2 || (x1 == x2 && y1 > y2);
+    });
+    print(a);
+}

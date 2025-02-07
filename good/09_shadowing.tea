@@ -1,0 +1,44 @@
+{
+    // Block shadowing.
+    let x = 1;
+    {
+        let x = 2; // Shadowing warning.
+        print(x);
+    };
+    print(x);
+
+    {
+        // Function body shadowing.
+        let y = 5;
+        let z = 4;
+        fn func(y: i64) -> i64 {
+            let z = 3;
+            return x * y * z; // 1 * y * 3
+        };
+        print(func(7)); // 21, not 15 nor 20 nor 28.
+
+        {
+            // Ultimate shadowing (arguments shadow function name
+            // and all arguments before).
+            fn x(x: i64, x: i64) -> i64 {
+                return x + x; // Only the second argument is used.
+            };
+            print(x(z - 1, z)); // 4 + 4
+            print(x(z, -z)); // -4 + -4
+        };
+    };
+
+    {
+        let x = 1;
+        // Reference allows for access to a shadowed variable.
+        let x_ref = ref x;
+        {
+            let x = 5;
+            print(x); // 5
+            print(x_ref); // 1
+            x_ref = x_ref + 1;
+            print(x); // 5
+        };
+        print(x); // 2
+    };
+}

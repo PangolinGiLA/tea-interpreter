@@ -1,0 +1,28 @@
+{
+    // All clean types.
+    let i32_v = <i32>(-32);
+    let i64_v = -64; // int literal type
+    let u32_v = <u32>(32);
+    let u64_v = <u64>(64);
+    let void_v: void;
+    let bool_v = true;
+    let char_v: char = 'a'; // type annotation is optional with initialization
+    let arr = [bool_v, false]; // can be of any type
+    let str = "Alice";
+    let tup = (i32_v, str, arr);
+    let fun = lambda (x: i64) -> (i64, bool) {
+        if x < 0 {
+            return (x, true);
+        } else {
+            return (x, false);
+        };
+    };
+    // void_t cannot be used as an rvalue as it is uninitialized.
+    print((i32_v, i64_v, u32_v, u64_v, bool_v, char_v, arr, str, tup, fun));
+
+    {
+        // There is one funny way to print void.
+        let ret_void = lambda () -> void { skip; };
+        print(ret_void());
+    };
+}

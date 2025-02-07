@@ -1,0 +1,1 @@
+[Error] Reference cannot be uninitialized. Tried to declare an uninitialized variable of type `ref i64`.

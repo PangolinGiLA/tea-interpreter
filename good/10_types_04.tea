@@ -1,0 +1,22 @@
+{
+    // Const references:
+    // - cannot modify the location pointed to,
+    // - cannot modify the underlying data,
+    // - cannot be cast to reference.
+    fn limited_fun(a: cref i64) -> i64 {
+        let a_copy = <i64>(a); // cref decays into const
+        a_copy = a_copy * 2;
+        return a_copy;
+    };
+    let x = 42;
+    let x_cref = cref x;
+    // All named references are decayed by default, unless ref/cref is used.
+    assert(limited_fun(cref x_cref) == 84, "cref");
+    assert(limited_fun(cref x_cref) == 84, "cref");
+    assert(x == 42, "cref const");
+    x = 21;
+    assert(limited_fun(cref x_cref) == 42, "cref ref");
+    assert(x == 21, "cref const");
+
+    print("Crefs passed!");
+}

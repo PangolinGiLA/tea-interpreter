@@ -1,0 +1,6 @@
+{
+    // Cannot cast between aliases if the underlying type cannot be cast.
+    using type_a = void;
+    using type_b = u32;
+    let x = <type_a>(<type_b>(<u32>(0))); // Invalid cast
+}

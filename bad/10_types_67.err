@@ -1,0 +1,1 @@
+[Error] Cannot cast from `(i64 -> i64)` to `(i64 -> const i64)`.

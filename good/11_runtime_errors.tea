@@ -1,0 +1,26 @@
+{
+    // No runtime errors will be thrown!
+
+    let x: i64;
+    if true {
+        x = 3; // Initializing x
+    };
+
+    print(1 / x); // You can divide by 3.
+    print(1 % x); // You can take modulo by 3.
+    print(x); // x is initalized
+    print(('a' + 4, 'a' + 863)); // Hello unicode!
+    {
+        let arr = [1, 1, 2, 3, 5, 8, 13];
+        print(arr[3]); // Index in range.
+        arr.pop(); // Pop works, array not empty.
+        arr.resize(2, 1); // Resizing to correct length.
+    };
+    {
+        fn fun() -> string {
+            print("Hello!");
+            return "This is fun!"; // Returning from a function.
+        };
+        print(fun());
+    };
+}

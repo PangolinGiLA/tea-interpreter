@@ -1,0 +1,23 @@
+{
+    // Constness - cannot mutate as lvalue.
+    let fun = lambda (x: i64) -> (i64, bool) {
+        if x < 0 {
+            return (x, true);
+        } else {
+            return (x, false);
+        };
+    };
+    let i64_v = -64; // int literal type
+    let consti64_v = <const i64>(i64_v);
+    // Can, however, cast back to clean in rvalue.
+    assert(<i64>(consti64_v) + 1 == -63, "Const cast.");
+    // And can be printed without casting.
+    print(consti64_v); // -64
+
+    // Can mutate any non-const value.
+    fun = lambda (x: i64) -> (i64, bool) {
+        return (x, true);
+    };
+    assert(fun(10) == (10, true), "Lambda reassgn.");
+    print("Constness passed!");
+}

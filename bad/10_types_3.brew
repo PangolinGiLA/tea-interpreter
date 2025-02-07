@@ -1,0 +1,44 @@
+// Type mismatch 0x
+// Op mismatch 1x
+// Arr 2x
+// Tuple 3x <---
+// Decl 4x
+// Return 5x
+// Cast 6x
+// Const 7x
+
+{
+    let tup = (1, ); // Invalid tuple size
+}
+
+{
+    let (a, ): (i64, ); // Invalid tuple size
+}
+
+{
+    let f: (i64 -> (i64, )); // Invalid tuple size
+}
+
+{
+    using type_t = (i64, ((char, ), bool), bool); // Invalid tuple size
+}
+
+{
+    let (a, b) = (1, true, true); // Tuple mismatch
+}
+
+{
+    let (a, (b, c)) = (1, 2, 3); // Tuple mismatch
+}
+
+{
+    let a: i64;
+    let b: bool;
+    (a, b) = (1, 1); // Type mismatch
+}
+
+{
+    let t1 = (1, 2);
+    let t2 = ("42", ref t1);
+    let (a, (b, c)) = t2; // Ref unpacking
+}

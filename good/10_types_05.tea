@@ -1,0 +1,31 @@
+{
+    // References, loops, functions, and newlocs.
+    let x1 = 5;
+    let r = ref x1;
+    for i in [0, 3] {
+        let x2 = -5;
+        if i == 0 {
+            r = ref x2;
+        };
+        r = r * 2;
+        // Reference r points to x2 only in the first iteration!
+        // Afterwards it points to an otherwise lost variable.
+        print((x2, r, x1));
+    };
+    // Reference r still points to the lost variable.
+    r = r + 1;
+    print((x1, r));
+
+    {
+        fn fun() -> ref i64 {
+            let inner = 15;
+            return ref inner;
+        };
+        let r1 = fun();
+        let r2 = fun();
+        r1 = 10;
+        assert(r1 != r2, "Repeated newloc in function.");
+        assert(ref r2 != fun(), "Repeated newloc in function.");
+    };
+    print("Newlocs and references passed!");
+}

@@ -1,0 +1,60 @@
+// Div zero
+// Mod zero
+// Use uninitialized
+// Char out of bounds
+// Array out of bounds v1
+// Array out of bounds v2
+// Pop empty array
+// Negative array size
+// Assertion failed
+// Uncaught return value
+
+{
+    let x = 1;
+    let y = 3;
+    if y / (x - 1) == 5 { // Cannot divide by 0.
+        print("Hello");
+    };
+}
+{
+    let x = 0;
+    let y = 3;
+    if y % x == 5 { // Cannot mod by 0.
+        print("Hello");
+    };
+}
+{
+    let x: i32;
+    print(x); // Cannot use uninitialized variables.
+}
+{
+    let x = 'a' + 100000000000; // Error: we allow only real characters.
+    // This number has to be so big because Haskell supports unicode.
+}
+{
+    let arr = [2, 3, 5, 7];
+    let x = 42;
+    print(arr[x + 19]); // Array out of bounds.
+}
+{
+    let arr = [2, 3, 5, 7];
+    let x = 42;
+    print(arr[x - 60]); // Array out of bounds.
+}
+{
+    let arr = [1, 1];
+    arr.pop();
+    arr.pop();
+    arr.pop(); // Cannot pop empty array.
+}
+{
+    let arr = [1, 2, 3];
+    arr.resize(-10, 1); // Cannot resize array to negative size.    
+}
+{ 
+    {
+        {
+            return 3; // You can only return from functions.   
+        };
+    };
+}

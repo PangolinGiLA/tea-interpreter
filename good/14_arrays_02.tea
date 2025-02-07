@@ -1,0 +1,41 @@
+{
+    // Crazy refs (local vs non-local changes in arrays).
+    let t1 = [1, 2];
+    let t2 = [3, 4];
+    let t3 = [5, 6];
+    let u1 = [ref t1, ref t2];
+    let u2 = [ref t2, ref t3];
+    let v1 = [u1, u1];
+    let v2 = [u2, u2];
+    let w1 = [v1, v2];
+    let w2 = [v2, v2];
+    let x: [ref [[[ref [i64]]]]] = [ref w1, ref w2];
+
+    print("w: [ref [[[ref [i64]]]]] =");
+    print(x);
+
+    // noref->noref = noref
+    v1[1] = u2;
+    // noref != noref->noref
+    assert(v1 != w1[0], "first");
+
+    // noref->ref = noref
+    u1[0] = t2; // "t1 = t2"
+    // noref == noref
+    assert(t1 == t2, "second");
+    {
+        let t1_from_x = x[1][1][0][0];
+        // decay (noref->ref->noref->noref->ref) == noref
+        assert(t1_from_x == t1, "second(2)");
+    };
+    
+    // noref->noref = noref
+    w2[1] = v1;
+    // noref->ref->noref == noref
+    assert(x[1][1] == v1, "third");
+
+    // noref->ref->noref->noref = noref
+    x[1][0][0] = u1;
+    assert(v2[0] == u2, "fourth");
+    assert(x[1][0][0] == u1, "fourth(2)");
+}

@@ -1,0 +1,71 @@
+// Type mismatch 0x
+// Op mismatch 1x
+// Arr 2x
+// Tuple 3x
+// Decl 4x
+// Return 5x
+// Cast 6x
+// Const 7x <---
+
+{
+    let x = <const u64>(0);
+    x = <const u64>(5); // Const violation
+}
+
+{
+    // Cref is strong.
+    let x = 5;
+    let y = cref x;
+    y = <const i64>(3); // Type mismatch (implicit const violation)
+}
+
+{
+    // Cref is strong.
+    let x = 5;
+    let z = 5;
+    let y = cref x;
+    y = cref z; // Const violation
+}
+
+{
+    // Functions are const by default.
+    fn f() -> void { skip; };
+    f = lambda () -> void { skip; }; // Type mismatch (implicit const violation)
+}
+
+{
+    // Constness 
+    let s = <const string>("ala");
+    s[0] = 'b'; // Const violation
+}
+
+{
+    let s = <const string>("ala");
+    s.resize(3, 'a'); // Const violation
+}
+
+{
+    let t = <const [i64]>([1, 2]);
+    t.pop(); // Const violation
+}
+
+{
+    let t1 = [1, 2];
+    let t2 = [3, 4];
+    let T1 = [t1, t2];
+    let T2 = [t2, t1];
+    let t: [const [[i64]]];
+
+    // Array t is not const.
+    t.push(<const [[i64]]>(T1));
+    t.push(<const [[i64]]>(T2));
+
+    // Array t[0] is const (and propagates further).
+    t[0][0][0] = 2; // Const violation
+}
+
+{
+    // Cannot take ref to a const variable (only cref).
+    let x = <const i64>(1);
+    let y = ref x; // Const violation
+}

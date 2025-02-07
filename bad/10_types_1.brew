@@ -1,0 +1,30 @@
+// Type mismatch 0x
+// Op mismatch 1x <---
+// Arr 2x
+// Tuple 3x
+// Decl 4x
+// Return 5x
+// Cast 6x
+// Const 7x
+
+{
+    let a = 5 + 'c'; // Plus mismatch
+}
+{
+    let a = 3 - [4, 3]; // Minus mismatch
+}
+{
+    let a = true * false; // Expected int
+}
+{
+    let a: u64 = <u64>(5);
+    let b = -a; // Expected signed
+}
+{
+    for i in ["ala", "kota"] { // Expected ordering
+        skip;
+    };
+}
+{
+    let b = "c" < 'c'; // Expected ordering
+}

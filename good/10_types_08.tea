@@ -1,0 +1,24 @@
+{
+    // Aliases (2).
+    using type_a = i64;
+    using type_b = i64;
+    using type_c = type_b;
+    using type_d = u64;
+    using tup_type_a = (type_c, (type_a, type_d));
+    using tup_type_b = (type_a, (type_d, type_b));
+    let x = (
+        <type_a>(0),
+        <type_b>(0),
+        <type_c>(0), // Note lack of type_b!
+        <type_b>(<type_a>(0)),
+        <type_c>(<type_a>(0)),
+        <type_a>(<type_c>(0))
+    );
+    
+    // Note the lack of cast i64->u64, because type_d = u64!
+    let tua = <tup_type_a>((<type_c>(-1), (<type_a>(-1), <type_d>(0))));
+    let tub = <tup_type_b>(tua); // Integer casting here.
+    print((tua, tub));
+
+    print("Aliases2 passed!");
+}

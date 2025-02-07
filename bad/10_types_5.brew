@@ -1,0 +1,63 @@
+// Type mismatch 0x
+// Op mismatch 1x
+// Arr 2x
+// Tuple 3x
+// Decl 4x
+// Return 5x <---
+// Cast 6x
+// Const 7x
+
+{
+    if 4 < 2 {
+        return; // Uncaught return
+    };
+}
+
+{
+    fn f() -> bool {
+        while true {
+            return false;
+        };
+        // No return statement
+    };
+}
+
+{
+    fn f() -> bool {
+        if 4 < 3 {
+            return false;
+        } else if 2 < 3 {
+            return true;
+        };
+        // No return statement
+    };
+}
+
+{
+    fn f() -> bool {
+        if 4 < 3 {
+            return false;
+        } else if 2 < 3 {
+            let x = 2;
+        } else {
+            return true;
+        };
+        // No return statement
+    };
+}
+
+{
+    let x = 2;
+    fn f() -> bool {
+        if 4 < 3 {
+            return false;
+        } else if 2 < 3 {
+            return true;
+        } else {
+            return true;
+        };
+        x = 3; // Dead code warning
+    };
+    return f(); // Uncaught return
+    x = 4;
+}

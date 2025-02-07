@@ -1,0 +1,50 @@
+{
+    // Aliases.
+    using size_t = i64;
+    using str_t = (string, size_t);
+    using mod_t = (ref str_t, (str_t -> str_t));
+
+    let str1 = <str_t>(("ala", <size_t>(3)));
+    let str2 = <str_t>(("kota", <size_t>(4)));
+
+    fn appender(a: str_t) -> str_t {
+        let (str, siz) = <real str_t>(a);
+        str.push('a');
+        siz = <size_t>(<i64>(siz) + 1);
+        return <str_t>((str, siz));
+    };
+    fn popper(a: str_t) -> str_t {
+        let (str, siz) = <real str_t>(a);
+        str.pop();
+        str.pop();
+        siz = <size_t>(<i64>(siz) - 2);
+        return <str_t>((str, siz));
+    };
+    
+    fn print_mod(a: mod_t) -> void {
+        let (str, f) = <real mod_t>(a);
+        let (s, siz) = <real str_t>(str);
+        print((s, siz));
+    };
+    fn print_mods(t: [mod_t]) -> void {
+        for i in [0, t.size()) {
+            print_mod(t[i]);
+        };
+    };
+
+    let mods = [
+        <mod_t>((ref str1, appender)),
+        <mod_t>((ref str2, appender)),
+        <mod_t>((ref str1, popper))];
+    
+    print_mods(mods); // "ala", "kota", "ala"
+
+    for i in [0, mods.size()) {
+        let (str, f) = <real mod_t>(mods[i]);
+        str = f(str);
+    };
+
+    print_mods(mods); // "al", "kotaa", "al"
+
+    print("Aliases1 passed!");
+}

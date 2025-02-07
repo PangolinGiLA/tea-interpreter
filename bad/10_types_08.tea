@@ -1,0 +1,5 @@
+{
+    using tup_t = (char, string);
+    let t = <tup_t>(('a', "alama"));
+    let (c, s) = t; // Cannot unpack without explicit cast back to tuple
+}

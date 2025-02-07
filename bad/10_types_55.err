@@ -1,0 +1,2 @@
+[Warning] There is a dead code somewhere (code after return statement).
+[Error] Cannot use `return` statement outside of a function body.

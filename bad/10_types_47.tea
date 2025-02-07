@@ -1,0 +1,5 @@
+{
+    using reftype_t = (ref char, i64);
+    using type_t = (i64, (reftype_t, i64));
+    let a: type_t; // Uninit reference
+}

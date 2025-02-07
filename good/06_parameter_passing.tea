@@ -1,0 +1,21 @@
+{
+    fn function(a : i64, b : ref i64) -> void {
+        a = a + 1;
+        b = b + 1;
+    };
+
+    let x = 1;
+    let y = 1;
+    
+    print("Parameter passed by value before function call: ");
+    print(x);
+    print("Parameter passed by reference before function call: ");
+    print(y);
+    
+    function(x, ref y);
+
+    print("Parameter passed by value after function call: ");
+    print(x);
+    print("Parameter passed by reference after function call: ");
+    print(y);
+}

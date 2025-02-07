@@ -1,0 +1,52 @@
+// Type mismatch 0x
+// Op mismatch 1x
+// Arr 2x
+// Tuple 3x
+// Decl 4x <---
+// Return 5x
+// Cast 6x
+// Const 7x
+
+{
+    a = 5; // Undeclared variable
+}
+
+{
+    let a = (5, (3, lambda (x: i64) -> i64 {
+        return x + b; // Undeclared variable
+    }));
+}
+
+{
+    let a = lambda (x: i64) -> i64 {
+        return a(x + 1); // Undeclared variable
+    };
+}
+
+{
+    let a: type_t; // Undeclared alias
+}
+
+{
+    using type_t = i64;
+    let a = <type_t>(5);
+    fn func() -> void {
+        using type_t = i64; // Alias shadowing
+    };
+}
+
+{
+    let a: ref i64; // Uninit reference
+}
+
+{
+    using reftype_t = (ref char, i64);
+    using type_t = (i64, (reftype_t, i64));
+    let a: type_t; // Uninit reference
+}
+
+{
+    using reftype_t = (ref char, i64);
+    using type_t = (i64, (reftype_t, i64));
+    let (a, b): type_t; // Uninit ref (checked before unpacking)
+}

@@ -1,0 +1,5 @@
+{
+    // Cannot take ref to a const variable (only cref).
+    let x = <const i64>(1);
+    let y = ref x; // Const violation
+}

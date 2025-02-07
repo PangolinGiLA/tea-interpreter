@@ -1,0 +1,17 @@
+1
+(2, c, (1, [(1, 2), (2, 3)]))
+(aaaa, __function__, aha, reference to #1)
+1
+2
+c
+(1, [(1, 2), (2, 3)])
+(aaaa, __function__, aha, reference to #1)
+1
+2
+c
+1
+(2, 3)
+aaaa
+3
+aha
+10

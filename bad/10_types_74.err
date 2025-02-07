@@ -1,0 +1,1 @@
+[Error] Type mismatch occured. Expected type `const (void -> void)`, instead provided `(void -> void)`.
